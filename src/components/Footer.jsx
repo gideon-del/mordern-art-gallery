@@ -1,13 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import Container from "../Layout/Container";
-import logo from "../assets/logo-light.svg";
 import facebook from "../assets/icon-facebook.svg";
 import twitter from "../assets/icon-twitter.svg";
 import instagram from "../assets/icon-instagram.svg";
-const Footer = () => {
+const Footer = ({ color, text, logo }) => {
   const Footer = styled.footer`
-    background-color: hsl(var(--clr-dark));
+    background-color: ${color};
     padding: 3rem;
   `;
   const FooterContainer = styled.div`
@@ -21,7 +20,7 @@ const Footer = () => {
     }
   `;
   const FooterContent = styled.p`
-    color: hsl(var(--clr-neutral));
+    color: ${text};
     max-width: 38ch;
     font-family: var(--ff-outfit);
     font-size: var(--fs-xs);

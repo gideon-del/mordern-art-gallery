@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import Container from "../Layout/Container";
 import img1Desk from "../assets/desktop/image-grid-1.jpg";
 import img1Mobile from "../assets/mobile/image-grid-1.jpg";
@@ -12,8 +12,8 @@ import img3Desk from "../assets/desktop/image-grid-3.jpg";
 import img3Mobile from "../assets/mobile/image-grid-3.jpg";
 import img3Tablet from "../assets/tablet/image-grid-3.jpg";
 
-const Grid = () => {
-  const Grid = styled.div`
+const Grid = ({ item }) => {
+  const Grd = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1.5fr;
     grid-template-areas:
@@ -83,15 +83,13 @@ const Grid = () => {
 
   return (
     <motion.section
-      initiial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{
-        duration: 10,
-      }}
-      viewport={{ once: true, amount: 0.8 }}
+      variants={item}
+      animate={false}
+      whileInView="visible"
+      style={{ paddingInline: "2rem" }}
     >
       <Container>
-        <Grid>
+        <Grd>
           <Content1>
             <Heading color="hsl(var(--clr-dark))">
               Your Day at the Gallery
@@ -134,7 +132,7 @@ const Grid = () => {
               process.
             </Paragraph>
           </Content2>
-        </Grid>
+        </Grd>
       </Container>
     </motion.section>
   );

@@ -15,7 +15,7 @@ export default createGlobalStyle`
     --fs-sm:1.135rem;
     --fs-md:2.25rem;
     --fs-lg: clamp(3.125rem,10vw + 2rem ,3.75rem);
-    --fs-xl: 4.38rem;
+    --fs-xl: clamp(3rem, 5vw + 1rem ,4.38rem);
     --fs-2xl: clamp(3rem, 10vw + 1rem,6rem);
     
     --ff-sans: 'Big Shoulders Display', sans-serif;
@@ -40,12 +40,16 @@ export default createGlobalStyle`
     max-width: 100%;
     object-fit: cover;
   }
+  a{
+    text-decoration: none;
+    color:inherit
+  }
   .loader {
   width: 48px;
   height: 48px;
   border-radius: 50%;
   display: inline-block;
-  border-top: 4px solid #000;
+  border-top: 4px solid #FFF;
   border-right: 4px solid transparent;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;

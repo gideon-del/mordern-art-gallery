@@ -6,7 +6,8 @@ import imgTablet from "../assets/tablet/image-hero.jpg";
 
 import icon from "../assets/icon-arrow-right.svg";
 import { motion } from "framer-motion";
-const Hero = () => {
+import Buttons from "../UI/Buttons";
+const Hero = ({ item }) => {
   const Section = styled(motion.section)`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -88,49 +89,12 @@ const Hero = () => {
     position: relative;
     z-index: -1;
   `;
-  const ButtonContainer = styled.div`
-    display: flex;
-    cursor: pointer;
-    transition: all 500ms ease-in;
-    & > * {
-      transition: all 100ms ease-in;
-    }
-    &:hover button {
-      background-color: hsl(var(--clr-brown));
-    }
-    &:hover div {
-      background-color: hsl(var(--clr-dark));
-    }
-  `;
   const HeroImgs = styled.div`
     grid-area: image;
     position: relative;
   `;
-  const Button = styled.button`
-    background-color: ${(props) => props.idle};
-    border: none;
-    color: hsl(var(--clr-neutral));
-    font-size: var(--fs-xs);
-    padding: 1rem 1.9rem;
-    cursor: pointer;
-  `;
-  const IconContainer = styled.div`
-    background-color: ${(props) => props.idle};
-    padding: 1rem 1.5rem;
-  `;
   return (
-    <Section
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 100,
-      }}
-      transition={{
-        duration: 1,
-        stiffness: 300,
-      }}
-    >
+    <Section variants={item}>
       <Heading>
         <h1>
           MODERN <br /> ART GALLERY
@@ -149,18 +113,7 @@ const Hero = () => {
           a spark of inspiration. Will these pieces inspire you? Visit us and
           find out.
         </p>
-        <ButtonContainer>
-          <Button idle="hsl(var(--clr-dark))" hover="hsl(var(--clr-brown))">
-            {" "}
-            OUR LOCATION{" "}
-          </Button>
-          <IconContainer
-            hover="hsl(var(--clr-dark))"
-            idle="hsl(var(--clr-brown))"
-          >
-            <img src={icon} />
-          </IconContainer>
-        </ButtonContainer>
+        <Buttons img={icon} content="our location" path="/location" />
       </Content>
     </Section>
   );
